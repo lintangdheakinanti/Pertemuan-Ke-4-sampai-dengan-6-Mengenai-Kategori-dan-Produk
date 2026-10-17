@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2026 at 02:40 PM
+-- Generation Time: Oct 17, 2026 at 11:03 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -81,7 +81,7 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id_produk`, `nama`, `deskripsi`, `kategori_id`, `harga`, `stok`) VALUES
-(1, 'Samsung A56 5G', 'Exynos 1580, 6,7 inci FHD+ Super AMOLED, 5000 mAh', 1, 7299000, 10);
+(1, 'Samsung A56 5G', 'Samsung A56 5G, Exynos 1580, 6,7 inci FHD+ Super AMOLED, 5000 mAh', 1, 7299000, 10);
 
 -- --------------------------------------------------------
 
@@ -100,11 +100,11 @@ CREATE TABLE `produk_gambar` (
 --
 
 INSERT INTO `produk_gambar` (`id_gambar`, `nama_gambar`, `produk_id`) VALUES
-(21, 'produk-1-0.jpg', 1),
-(22, 'produk-1-01.jpg', 1),
 (23, 'produk-1-02.jpg', 1),
 (24, 'produk-1-03.jpg', 1),
-(28, 'produk-1-04.jpg', 1);
+(28, 'produk-1-04.jpg', 1),
+(33, 'produk-1-0.jpg', 1),
+(34, 'produk-1-1792227408.jpg', 1);
 
 --
 -- Indexes for dumped tables
@@ -144,7 +144,7 @@ ALTER TABLE `produk_gambar`
 -- AUTO_INCREMENT for table `administrator`
 --
 ALTER TABLE `administrator`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -162,7 +162,7 @@ ALTER TABLE `produk`
 -- AUTO_INCREMENT for table `produk_gambar`
 --
 ALTER TABLE `produk_gambar`
-  MODIFY `id_gambar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_gambar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Constraints for dumped tables

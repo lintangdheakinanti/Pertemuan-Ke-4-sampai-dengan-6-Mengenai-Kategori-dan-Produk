@@ -32,7 +32,7 @@
 							<br>
 
 							<p class="card-text">
-								<form method="post" enctype="multipart/form-data">
+								<form id="formUtama" action="<?= base_url('admin/produk/ubah/' . $produk['id_produk']) ?>" method="post" enctype="multipart/form-data">
 									<div class="mb-3">
 										<label for="nama_produk" class="form-label">Nama Produk</label>
 										<input type="text" class="form-control" name="nama_produk" id="nama_produk" aria-describedby="Nama produk" value="<?= $produk['nama'] ?>">
@@ -67,7 +67,9 @@
 									<div class="mb-3">
 										<label for="gambar_produk" class="form-label">Gambar Produk</label>
 										<input class="form-control" type="file" id="gambar_produk" name="gambar_produk[]" style="height: auto; padding: 12px 15px;" multiple>
+										<?= $this->session->flashdata('message'); ?>
 									</div>
+								</form> 
 
 									<?php 
 									// get gambar dengan id produk
@@ -78,22 +80,42 @@
 									        <div class="col-lg-3">
 									            <div class="card" style="width: 18rem;">
 									                <img src="<?= base_url('uploads/produk/') . $gambar['nama_gambar'] ?>" class="card-img-top" style="height: 200px; object-fit: cover;">
-									                <div class="card-body d-grid">
-									                    <a href="<?= base_url('admin/produk/hapus_gambar/' . $gambar['id_gambar']) ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus gambar ini?')">Hapus</a>
-									                </div>
-									            </div>
+														<div class="card-body">
+														    <div class="row g-2">
+														        
+														        <!-- kolom kiri (ubah) -->
+														        <div class="col-6">
+														            <form action="<?= base_url('admin/produk/ubah_gambar/' . $gambar['id_gambar']) ?>" method="post" enctype="multipart/form-data">
+														                <input type="hidden" name="produk_id" value="<?= $produk['id_produk'] ?>">
+														                <input type="file" name="gambar_baru" id="ganti_gambar_<?= $gambar['id_gambar'] ?>" style="display: none;" accept="image/*" required onchange="this.form.submit()">
+														                
+														                <label for="ganti_gambar_<?= $gambar['id_gambar'] ?>" class="btn btn-warning text-white btn-sm w-100" style="cursor: pointer; font-weight: normal;">
+														                  <i class="fas fa-edit"></i> Ubah
+														                </label>
+														            </form>
+														        </div>
+
+														        <!-- kolom kanan (hapus) -->
+														        <div class="col-6">
+														            <a href="<?= base_url('admin/produk/hapus_gambar/' . $gambar['id_gambar']) ?>" class="btn btn-danger btn-sm w-100" onclick="return confirm('Apakah Anda yakin ingin menghapus gambar ini?')">
+														               <i class="fas fa-trash"></i> Hapus
+														            </a>
+														        </div>
+
+														    </div>
+														</div>
+													</div>
 									        </div>
 									    <?php endforeach ?>
 									</div>
 
 									<div class="mb-3">
 										<label for="deskripsi_produk" class="form-label">Deskripsi</label>
-										<textarea name="deskripsi_produk" id="deskripsi_produk" cols="30" rows="10" class="form-control"><?= $produk['deskripsi'] ?></textarea>
+										<textarea name="deskripsi_produk" form="formUtama" id="deskripsi_produk" cols="30" rows="10" class="form-control"><?= $produk['deskripsi'] ?></textarea>
 									</div>
 
-									<button type="submit" class="btn btn-primary">Ubah</button>
+									<button type="submit" form="formUtama" class="btn btn-primary">Ubah</button>
 									<a href="<?= base_url('admin/produk') ?>" class="btn btn-danger">Kembali</a>
-								</form>
 							</p>
 						</div>
 					</div>

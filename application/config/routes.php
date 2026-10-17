@@ -70,3 +70,6 @@ $route['admin/produk/hapus/(:num)'] = 'administrator/produk_controller/hapus_pro
 
 //admin-hapus gambar produk (dalam ubah_produk.php)
 $route['admin/produk/hapus_gambar/(:num)'] = 'administrator/produk_controller/hapus_gambar/$1';
+
+//admin-ubah gambar produk (dalam ubah_produk.php)
+$route['admin/produk/ubah_gambar/(:num)'] = 'administrator/produk_controller/ubah_gambar/$1';
